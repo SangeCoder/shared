@@ -93,7 +93,8 @@ Kubernetes的设计模型我认为有几个好的地方：
 答：CaaS容器即服务，我的理解就是PaaS,主不过主打这Docker容器，所以叫CaaS
 
 2.开源势必引入安全问题。Cloud Foundry的安全保护机制？
-Cloud Foundry对于应用有个安全组的特性，可以控制应用容器的访问。但是实际上能力不强，容器安全这块一直是被担心的地方。
+
+答：Cloud Foundry对于应用有个安全组的特性，可以控制应用容器的访问。但是实际上能力不强，容器安全这块一直是被担心的地方。
 
 3.K8s可以实现应用的自主漂移吗？
 
@@ -140,4 +141,34 @@ Cloud Foundry对于应用有个安全组的特性，可以控制应用容器的�
 答：这个参考上一期的分享http://dockone.io/article/618
 
 14.如果将flannel替换成ovs是不是也可以替换掉kube-proxy，如果是那会不会影响集群中SVC的使用？
-flannel/ovs和kube-proxy的作用是不一样的，可以看下http://dockone.io/article/545
+
+答：flannel/ovs和kube-proxy的作用是不一样的，可以看下http://dockone.io/article/545
+
+15.K8S中一个PV是不是只能和一个PVC bound呢？
+
+答：是的
+
+16.k8s现在具备auto scaling能力吗，比如应用响应时间变长，k8s可以自动扩容
+
+答：没有
+
+17.贵司生产环境上docker的有案例吗？
+
+答：目前正在设计内测阶段，还没有
+
+18.我记得好像京东也是基于cloud foundary的，他们的队列处理那边加了yarn，号称有ha，ha有必要吗？
+
+答：最开始的京东云是cf，不过后来停了。至于yarn，没了解到
+
+19.k8中数据同步是push还是pull？
+
+答：k8s数据同步，是数据集中写到etcd中，然后组件都从etcd同步
+
+20.能举个PVC的适用场景吗？
+
+答：官方文档有说明，就是屏蔽了volume的实现，对用户来说只是个存储
+
+21.Kubernetes+etcd怎么做服务发现，微服务应用，如果用于生产，有什么坑？
+
+答：k8s中的服务发现是通过service实现的。 微服务应用，有坑的话，我想主要是通信问题吧
+
