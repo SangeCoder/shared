@@ -175,4 +175,8 @@ Kubernetes的设计模型我认为有几个好的地方：
 
 22.docker在centos上使用devicemapper，据说容易使系统crash，对于其他的文件系统有没有推荐，brtfs和aufs哪个更好？
 
-答：aufs是内核不接受的，听说是代码挺乱的。brtfs没有研究过，
+答：aufs是内核不接受的，听说是代码挺乱的。brtfs没有研究过
+
+23.能说下贵司做了哪些测试案例么？
+
+答：k8s的各个方面，安全，存储，日志，监控各个维度的方案验证，还有kube-proxy flannel、ovs，性能等等
