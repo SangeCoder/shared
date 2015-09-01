@@ -131,3 +131,13 @@ Cloud Foundry对于应用有个安全组的特性，可以控制应用容器的�
 
 答：没有任何技术是银弹，不同需求不同设计。当然大家都想占据制高点了，这就是运作了
 
+12.Pod直接通信需要开通隧道么？换句话说他们之间是如何实现通信的？
+
+答：容器跨主机的通信，是对docker的增强，像flannel,ovs等
+
+13.flannel是建立在kubernates上的吧，具体通信原理我不是很清楚哎，如果是手动的，好像是通过桥接的吧，那么kubernates具体是怎么玩的呢？？？
+
+答：这个参考上一期的分享http://dockone.io/article/618
+
+14.如果将flannel替换成ovs是不是也可以替换掉kube-proxy，如果是那会不会影响集群中SVC的使用？
+flannel/ovs和kube-proxy的作用是不一样的，可以看下http://dockone.io/article/545
