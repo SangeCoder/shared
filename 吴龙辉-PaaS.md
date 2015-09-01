@@ -63,6 +63,7 @@ Docker 是 PaaS 提供商 dotCloud 开源的高级容器引擎，Docker自2013�
 像很多文章提到的Docker快速敏捷（启动，停止都是以秒或毫秒为单位的），隔离轻量级（不添加额外的操作系统），这些实际上是Linux内核提供的能力，Docker是沿用了这些特性，像CloudFoundry的Warden也有这些能力。
 
 Docker最大的创新点在于Docker Image的设计，下面是张Docker Image的层次图，分层的文件系统，一层层地搭建出一个完整的容器运行环境：
+
 ![](http://i.imgur.com/HAwVGMI.png)
 
 这样一来，我们可以像乐高玩具一样搭建各式各样的镜像，同时Docker提供了一整套镜像存储方案（Docker Registry），可以非常方便地获取想要的镜像，然后快速地启动运行，而不必像以前那样安装各种麻烦的依赖软件。所以Docker更像个微创新者，但是解决了最大痛点，像Warden只解决了应用运行的问题，而Docker解决了应用的发布，构建和运行，创建了很多想象空间，紧接着基于Docker衍生出了很多新的解决方案，特别是PaaS，即第三代的PaaS, Kubernetes是其中最具代表性的一员，最后讲一下Kubernetes。 
@@ -172,3 +173,6 @@ Kubernetes的设计模型我认为有几个好的地方：
 
 答：k8s中的服务发现是通过service实现的。 微服务应用，有坑的话，我想主要是通信问题吧
 
+22.docker在centos上使用devicemapper，据说容易使系统crash，对于其他的文件系统有没有推荐，brtfs和aufs哪个更好？
+
+答：aufs是内核不接受的，听说是代码挺乱的。brtfs没有研究过，
