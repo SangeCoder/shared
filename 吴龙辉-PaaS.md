@@ -180,3 +180,7 @@ Kubernetes的设计模型我认为有几个好的地方：
 23.能说下贵司做了哪些测试案例么？
 
 答：k8s的各个方面，安全，存储，日志，监控各个维度的方案验证，还有kube-proxy flannel、ovs，性能等等
+
+24.docker现在网络在使用虚拟网卡的方案都会存在性能问题，如服务对性能要求较高，在使用kubernetes的可有解决方案？如果强制使用host模式，kubernetes可有解决方案实现host方式？
+
+答：k8s是基于docker的网桥模式，如果docker有问题，k8s只是打通了docker跨host的通信，源头有问题，k8s也解决不了
