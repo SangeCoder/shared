@@ -158,4 +158,6 @@ Kafka的partition lag统计跑在了Chronos上，配合我们每个机房专门�
 
 答：全部是hostname:UNIQUE，部署基础服务，heka，statsd，cadvisor都是hostname:UNIQUE的，每个机器只有一个，HA交给Marathon
 
-25）
+25）你们用fluentd收集容器日志是怎么区分业务的？把flume打到容器里面了吗？
+
+答：业务日志走的flume，我们内部有一个服务治理的应用，你可以理解成公司内部的应用全部都在这里注册，注册后分配一个唯一的app code，flume收集的时候会自动同步app，同步app code，并发给kafka，后续的全部解析都是绑定到app code这个级别的；  不需要打，一个机器一个heka的容器，可以把这台机器上全部的docker日志都收了，heka配合MESOS_TASK_ID，容器就自动区分出来了，在Logstash里可以直接根据MESOS_TASK_ID分类，并写入不同的索引，整套过程不需要额外的工作。
