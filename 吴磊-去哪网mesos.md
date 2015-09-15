@@ -161,3 +161,7 @@ Kafka的partition lag统计跑在了Chronos上，配合我们每个机房专门�
 25）你们用fluentd收集容器日志是怎么区分业务的？把flume打到容器里面了吗？
 
 答：业务日志走的flume，我们内部有一个服务治理的应用，你可以理解成公司内部的应用全部都在这里注册，注册后分配一个唯一的app code，flume收集的时候会自动同步app，同步app code，并发给kafka，后续的全部解析都是绑定到app code这个级别的；  不需要打，一个机器一个heka的容器，可以把这台机器上全部的docker日志都收了，heka配合MESOS_TASK_ID，容器就自动区分出来了，在Logstash里可以直接根据MESOS_TASK_ID分类，并写入不同的索引，整套过程不需要额外的工作。
+
+26）cadvisor好像只能监控单机容器情况，那对于集群的容器监控，使用ca怎么处理呢
+
+答：我们目前是cadvisor聚合好以后发给我们的公司的监控平台，由监控平台统一处理。最新版已经merge了许多storage-driver了，statsd值得试一下。
